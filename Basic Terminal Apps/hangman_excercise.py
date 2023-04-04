@@ -53,6 +53,7 @@ def quit():
 
 def hangman():
     # Initialize hangman
+    # I know, this part is redundant, but I like it.
     guess_word = random.choice(words)
     print("\nCan you guess?")
     number_of_underscores = len(guess_word)
