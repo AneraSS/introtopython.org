@@ -1,3 +1,8 @@
+def get_mountain_range(name):
+    return ranges[name]
+
+
+
 mountains = {
     "Mount Everest": 8848,
     "K2": 8612,
@@ -9,26 +14,32 @@ mountains = {
     "Scafell Pike": 978
 }
 
-for name, elevation_m in mountains.items():
-    elevation_ft = round (elevation_m*3.28)
-    mountains[name] = [elevation_m, elevation_ft]
+ranges = {
+    "Mount Everest": "Nepal",
+    "K2": "Pakistan",
+    "Gurla Mandhata": "China",
+    "Machapuchare": "Nepal",
+    "Cerro El Plomo": "Chile",
+    "Mont Blanc": "France",
+    "Zugspitze": "Germany",
+    "Scafell Pike": "England"
+}
 
-print("\nList of mountains:")
+for name, elevation in mountains.items():
+    mountains[name] = {"elevation": elevation, "range": get_mountain_range(name)}
+
+print("Mountain names:")
 for name in mountains.keys():
     print(f"- {name}")
 
-print("\nList of elevations in meters:")
-for elevation in mountains.values():
-    print(f"- {elevation[0]} m")
+print(f"\nMountain elevations in meters:")
+for mt_description in mountains.values():
+    print(f"- {mt_description['elevation']}")
 
+print(f"\nMountain ranges:")
+for mt_description in mountains.values():
+    print(f"- {mt_description['range']}")
 
-print("\nList of elevations in feet:")
-for elevation in mountains.values():
-    print(f"- {elevation[1]} ft")
-
-print("\nStatements telling how tall each mountain is:")
-for name, elevations in mountains.items():
-    print(f"- {name} is {elevations[0]} m tall, or {elevations[1]} ft.")
-
-
-
+print("\nSeries of statements that say everything you know about each mountain: ")
+for name, mt_description in mountains.items():
+    print(f"- {name} is an {mt_description['elevation']}-meter tall mountain in the {mt_description['range']} range. ")
